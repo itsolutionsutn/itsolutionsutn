@@ -1,6 +1,6 @@
 {
-    "short_name": "PWA con MD",
-    "name": "PWA con Material Design IT Solutions",
+    "short_name": "PWA ITSC.",
+    "name": "PWA con Material Design IT Solution Comedy.",
     "id": "/index.html",
     "start_url": "/index.html",
     "display": "standalone",
@@ -9,18 +9,18 @@
     "display_override": [
         "window-controls-overlay"
     ],
-    "description": "PWA con componentes de Material Design.",
+    "description": "PWA con Material Design IT Solution Comedy.",
     "screenshots": [
         {
             "src": "/img/screenshot_horizontal.png",
-            "sizes": "1257x646",
+            "sizes": "1186x722",
             "type": "image/png",
             "form_factor": "wide",
             "label": "PWA con Material Design"
         },
         {
             "src": "/img/screenshot_vertical.png",
-            "sizes": "595x644",
+            "sizes": "510x790",
             "type": "image/png",
             "form_factor": "narrow",
             "label": "PWA con Material Design (2)"
