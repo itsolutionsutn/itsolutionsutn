@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Modificar - IT Solution List</title>
+		<meta name="theme-color" content="#fffbfe" />
+		<link rel="icon" sizes="32x32" href="favicon.ico" />
+		<link rel="manifest" href="site.webmanifest" />
+		<script src="ungap/custom-elements.js"></script>
+
+		<script type="module" src="js/configura.js"></script>
+		<link rel="stylesheet" href="css/estilos.css" />
+		<link rel="stylesheet" href="css/transicion_pestanas.css" />
+
+		<script type="module" src="lib/js/muestraError.js"></script>
+		<script type="module" src="lib/js/muestraObjeto.js"></script>
+		<script type="module" src="js/bd/pasatiempoBusca.js"></script>
+		<script type="module" src="js/bd/pasatiempoElimina.js"></script>
+		<script type="module" src="js/bd/pasatiempoModifica.js"></script>
+		<script>
+			// Obtiene los parámetros de la página.
+			const parametros = new URL(location.href).searchParams;
+
+			const paramId = parametros.get("id");
+		</script>
+	</head>
+	<body
+		onload="if (paramId !== null) {
+    pasatiempoBusca(paramId)
+     .then(pasatiempo => {
+      if (pasatiempo === undefined) throw new Error('Pasatiempo no encontrado.')
+      muestraObjeto(forma, { nombre: { value: pasatiempo.PAS_NOMBRE } })
+     })
+     .catch(muestraError)
+   }"
+	>
+  <main>
+		<form
+			id="forma"
+			onsubmit="
+    event.preventDefault()
+    if (paramId !== null) {
+     const PAS_ID = paramId
+     // Lee el nombre, quitándole los espacios al inicio y al final.
+     const PAS_NOMBRE = forma.nombre.value.trim()
+     const modelo = { PAS_ID, PAS_NOMBRE }
+     pasatiempoModifica(modelo)
+      .then(json => location.href = 'index.html')
+      .catch(muestraError)
+    }"
+		>
+			<h1>Modificar</h1>
+      <div style="display: flex; justify-content: flex-end; align-items: center; gap: 0.5rem; height: 100px">
+        <button class="md-filled-button" type="submit" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem">
+          <span style="line-height: 1; display: inline-block; margin-top: -2px">Guardar</span>
+          <span class="material-symbols-outlined" style="font-size: 1.2rem">save</span>
+        </button>
+        <button is="md-overflow-button" slot="action" onclick="overflow.alterna(this)" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem"></button>
+      </div>
+			<p>
+				<label>
+					Nombre *
+					<input name="nombre" value="Cargando&hellip;" />
+				</label>
+			</p>
+
+			<p>* Obligatorio</p>
+
+      <p>
+        <a href="index.html" class="md-outline-button" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; float: right; text-decoration: none;">
+          <span style="line-height: 1; display: inline-block; margin-top: -2px">Cancelar</span>
+          <span class="material-symbols-outlined" style="font-size: 1.2rem">cancel</span>
+        </a>
+      </p>
+		</form>
+  </main>
+  <md-overflow-menu id="overflow">
+    <button
+      type="button"
+      onclick="
+        if (paramId !== null && confirm('Confirma la eliminación')) {
+          pasatiempoElimina(paramId)
+            .then(() => location.href = 'index.html')
+            .catch(muestraError)
+      }"
+    >
+      <span class="material-symbols-outlined">delete</span>
+      Eliminar
+    </button>
+  </md-overflow-menu>
+	</body>
+</html>

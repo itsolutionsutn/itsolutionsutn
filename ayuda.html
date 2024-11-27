@@ -1,99 +1,77 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="light dark">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Ayuda - IT Solution List</title>
 
-<head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width">
+		<script src="js/registraServiceWorker.js"></script>
 
- <title>
-  Ayuda - PWA con MD
- </title>
+		<meta name="viewport" content="width=device-width" />
+		<meta name="theme-color" content="#fffbfe" />
+		<link rel="icon" sizes="32x32" href="favicon.ico" />
+		<link rel="manifest" href="site.webmanifest" />
+		<script src="ungap/custom-elements.js"></script>
 
- <meta name="theme-color" content="#fffbfe">
- <link rel="icon" sizes="32x32" href="favicon.ico">
- <link rel="manifest" href="site.webmanifest">
+		<script type="module" src="js/configura.js"></script>
+		<link rel="stylesheet" href="css/estilos.css" />
+		<link rel="stylesheet" href="css/transicion_pestanas.css" />
+	</head>
 
- <link rel="stylesheet" href="css/estilos.css">
- <script src="ungap/custom-elements.js"></script>
- <script type="module" src="js/configura.js"></script>
+	<body>
+		<nav-tab-fixed id="tab"></nav-tab-fixed>
 
-</head>
-
-<body>
-
- <md-top-app-bar>
-
-  <h1>Ayuda</h1>
-
-  <button is="md-menu-button" slot="navigation"
-    onclick="nav.abre()"></button>
-
- </md-top-app-bar>
-
- <main>
-
-  <ul class="md-list">
-   <li class="md-two-line">
-    <span class="headline">
-     Título
-    </span>
-    <span class="supporting">
-     PWA con Material Design
-    </span>
-   </li>
-   <li class="md-two-line">
-    <span class="headline">
-     Descripción
-    </span>
-    <span class="supporting">
-     Ejemplos de vistas móviles.
-    </span>
-   </li>
-   <li class="md-two-line">
-    <span class="headline">
-     Autor
-    </span>
-    <span class="supporting">
-     Gilberto Pacheco Gallegos
-    </span>
-   </li>
-   <li class="md-two-line">
-    <span class="headline">
-     Derechos de autor
-    </span>
-    <span class="supporting">
-     &copy; 2024 Gilberto Pacheco Gallegos
-    </span>
-   </li>
-   <li class="md-three-line">
-    <span class="headline">
-     Este software usa la librería para PWA
-    </span>
-    <span class="supporting">
-     Esta obra de Gilberto Pacheco Gallegos está bajo una
-     <a target="_blank" rel="license noopener noreferrer"
-       href="http://creativecommons.org/licenses/by/4.0/">
-      Licencia Creative Commons Atribución 4.0
-      Internacional</a> </span>
-   </li>
-   <li>
-    <a class="md-three-line"
-      target="_blank" rel=”noopener noreferrer”
-      href="https://fonts.google.com/icons">
-     <span class="headline">
-      También usa Material Symbols
-     </span>
-     <span class="supporting">
-      Desarrollada por Google bajo licencia Apache 2.0
-     </span>
-    </a>
-   </li>
-  </ul>
-
- </main>
-
- <nav-drw id="nav"></nav-drw>
-
-</body>
-
+		<main>
+			<ul class="md-list">
+				<li class="md-two-line">
+					<span class="headline">Título</span>
+					<span class="supporting">IT Solution Comedy</span>
+				</li>
+				<li class="md-two-line">
+					<span class="headline">Descripción</span>
+					<span class="supporting">Página de humor y chistes sobre el mundo de la informática.</span>
+				</li>
+				<li class="md-two-line">
+					<span class="headline">Autor</span>
+					<span class="supporting">IT Solution Comedy</span>
+					<span class="supporting" style="display: inline-flex; align-items: center">
+						<span class="material-symbols-outlined" style="font-size: 1rem; margin-right: 0.5rem">arrow_right</span>
+						Campos Figueroa Brandon
+					</span>
+					<br />
+					<span class="supporting" style="display: inline-flex; align-items: center">
+						<span class="material-symbols-outlined" style="font-size: 1rem; margin-right: 0.5rem">arrow_right</span>
+						Chaparro Marín Daniel
+					</span>
+					<br />
+					<span class="supporting" style="display: inline-flex; align-items: center">
+						<span class="material-symbols-outlined" style="font-size: 1rem; margin-right: 0.5rem">arrow_right</span>
+						Cortés Islas Brandon
+					</span>
+					<br />
+					<span class="supporting" style="display: inline-flex; align-items: center">
+						<span class="material-symbols-outlined" style="font-size: 1rem; margin-right: 0.5rem">arrow_right</span>
+						Cruz Hernández Génesis Uriel Yair
+					</span>
+				</li>
+				<li class="md-two-line">
+					<span class="headline">Derechos de autor</span>
+					<span class="supporting">&copy; 2024 IT Solution Comedy</span>
+				</li>
+				<li class="md-three-line">
+					<span class="headline">Créditos adicionales</span>
+					<span class="supporting">
+						Esta página fue desarrollada por IT Solution Comedy, haciendo uso de la obra de Gilberto Pacheco Gallegos bajo una
+						<a target="_blank" rel="license noreferrer" href="http://creativecommons.org/licenses/by/4.0/">Licencia Creative Commons Atribución 4.0 Internacional</a>
+						.
+					</span>
+				</li>
+				<li>
+					<a class="md-three-line" target="_blank" rel="noreferrer" href="https://fonts.google.com/icons">
+						<span class="headline">También usa Material Symbols</span>
+						<span class="supporting">Desarrollada por Google bajo licencia Apache 2.0</span>
+					</a>
+				</li>
+			</ul>
+		</main>
+	</body>
 </html>

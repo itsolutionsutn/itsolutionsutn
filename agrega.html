@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es" class="light dark">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Alta - IT Solution List</title>
+
+		<script src="js/registraServiceWorker.js"></script>
+
+		<meta name="viewport" content="width=device-width" />
+		<meta name="theme-color" content="#fffbfe" />
+		<link rel="icon" sizes="32x32" href="favicon.ico" />
+		<link rel="manifest" href="site.webmanifest" />
+		<script src="ungap/custom-elements.js"></script>
+
+		<script type="module" src="js/configura.js"></script>
+		<link rel="stylesheet" href="css/estilos.css" />
+		<link rel="stylesheet" href="css/transicion_pestanas.css" />
+		<script type="module" src="lib/js/muestraError.js"></script>
+		<script type="module" src="js/bd/pasatiempoAgrega.js"></script>
+	</head>
+
+	<body>
+		<main>
+			<form id="forma" onsubmit="
+				event.preventDefault()
+   				// Lee el nombre, quitándole los espacios al inicio y al final.
+				const PAS_NOMBRE = forma.nombre.value.trim()
+				const modelo = { PAS_NOMBRE }
+					pasatiempoAgrega(modelo)
+						.then(json => location.href = 'index.html')
+						.catch(muestraError)">
+				<h1>Alta</h1>
+				<button class="md-filled-button" type="submit" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; float: right">
+					<span style="line-height: 1; display: inline-block; margin-top: -2px">Guardar</span>
+					<span class="material-symbols-outlined" style="font-size: 1.2rem">save</span>
+				</button>
+				<br><br><br>	
+				<button class="md-outline-button" onclick="window.location.href='ayuda.html';" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; float: right">
+					<span style="line-height: 1; display: inline-block; margin-top: -2px">Ayuda</span>
+					<span class="material-symbols-outlined" style="font-size: 1.2rem">help</span>
+				</button>
+				<br>
+				<p>
+					<label>
+						Nota *
+						<input name="nombre" />
+					</label>
+				</p>
+
+				<p>* Obligatorio</p>
+
+				<p>
+					<a href="index.html" class="md-outline-button" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; float: right; text-decoration: none;">
+						<span style="line-height: 1; display: inline-block; margin-top: -2px">Cancelar</span>
+						<span class="material-symbols-outlined" style="font-size: 1.2rem">cancel</span>
+					</a>
+				</p>
+			</form>
+		</main>
+	</body>
+</html>
