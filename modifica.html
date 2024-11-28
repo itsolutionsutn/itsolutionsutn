@@ -30,49 +30,69 @@
     pasatiempoBusca(paramId)
      .then(pasatiempo => {
       if (pasatiempo === undefined) throw new Error('Pasatiempo no encontrado.')
-      muestraObjeto(forma, { nombre: { value: pasatiempo.PAS_NOMBRE } })
+      muestraObjeto(forma, { nombre: { value: pasatiempo.PAS_NOMBRE  } })
      })
      .catch(muestraError)
    }"
 	>
   <main>
-		<form
-			id="forma"
-			onsubmit="
-    event.preventDefault()
-    if (paramId !== null) {
-     const PAS_ID = paramId
-     // Lee el nombre, quitándole los espacios al inicio y al final.
-     const PAS_NOMBRE = forma.nombre.value.trim()
-     const modelo = { PAS_ID, PAS_NOMBRE }
-     pasatiempoModifica(modelo)
-      .then(json => location.href = 'index.html')
-      .catch(muestraError)
-    }"
-		>
-			<h1>Modificar</h1>
-      <div style="display: flex; justify-content: flex-end; align-items: center; gap: 0.5rem; height: 100px">
-        <button class="md-filled-button" type="submit" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem">
-          <span style="line-height: 1; display: inline-block; margin-top: -2px">Guardar</span>
-          <span class="material-symbols-outlined" style="font-size: 1.2rem">save</span>
+		<form id="forma" onsubmit="
+      event.preventDefault()
+      if (paramId !== null) {
+        const PAS_ID = paramId
+        // Lee el nombre, quitándole los espacios al inicio y al final.
+        const PAS_NOMBRE = forma.nombre.value.trim()
+        const modelo = { PAS_ID, PAS_NOMBRE }
+        pasatiempoModifica(modelo)
+        .then(json => location.href = 'index.html')
+        .catch(muestraError)
+      }"
+    >
+      <md-top-app-bar class="medium material justificado" headline="h1Headline" role="toolbar">
+              
+        <button slot="navigation" type="button" class="md-standard-icon-button" onclick="window.location.href='index.html';">
+          <span class="material-symbols-outlined">arrow_back</span>
         </button>
-        <button is="md-overflow-button" slot="action" onclick="overflow.alterna(this)" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem"></button>
-      </div>
-			<p>
-				<label>
-					Nombre *
-					<input name="nombre" value="Cargando&hellip;" />
-				</label>
-			</p>
 
-			<p>* Obligatorio</p>
+        <button type="submit" class="md-standard-icon-button" title="Guardar" slot="action">
+          <span class="material-symbols-outlined">save</span>
+        </button>
+
+        <button type="button" class="md-standard-icon-button" onclick="window.location.href='ayuda.html';" title="Ayuda" slot="action">
+          <span class="material-symbols-outlined">help</span>
+        </button>
+
+        <button is="md-overflow-button" slot="action" onclick="overflow.alterna(this)" type="button" class="md-standard-icon-button">
+          <span style="color: var(--md-sys-color-on-surface-variant)" class="material-symbols-outlined">
+            more_vert
+          </span>
+        </button>
+
+      </md-top-app-bar>
+      <h1>Modificar nota</h1>
+			
+      <p>
+        <label class="md-filled-text-field">
+          <input required="" placeholder="Nombre*" name="nombre" value="Cargando&hellip;">
+           <span>Nombre *</span>
+          <small>Obligatorio</small>
+        </label>
+      </p>
 
       <p>
-        <a href="index.html" class="md-outline-button" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; float: right; text-decoration: none;">
-          <span style="line-height: 1; display: inline-block; margin-top: -2px">Cancelar</span>
-          <span class="material-symbols-outlined" style="font-size: 1.2rem">cancel</span>
-        </a>
+        <label class="md-filled-text-field">
+          <input  placeholder="Categoria*" name="categoria" >
+           <span>Categoria *</span>
+        </label>
       </p>
+
+      <p>
+        <label class="md-filled-text-field">
+          <textarea rows="3" name="descripcion" ></textarea>
+          <span>Dirección</span>
+        </label>
+      </p>
+
 		</form>
   </main>
   <md-overflow-menu id="overflow">
